@@ -60,7 +60,7 @@ const Navigation = () => {
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className="relative px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors duration-200 group"
+                  className="relative px-3 py-2 text-sm font-medium text-foreground hover:text-accent transition-colors duration-200 group"
                 >
                   {item.label}
                   {/* Animated underline */}
@@ -110,7 +110,7 @@ const Navigation = () => {
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-foreground/80 hover:text-foreground hover:bg-accent/10 transition-colors duration-200 w-full text-left"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-accent hover:bg-accent/10 transition-colors duration-200 w-full text-left"
                 >
                   {item.label}
                 </button>

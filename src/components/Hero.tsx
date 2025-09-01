@@ -82,7 +82,7 @@ const Hero = () => {
             onClick={downloadResume}
             variant="outline"
             size="lg"
-            className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 font-semibold px-8 py-4 rounded-full hover-lift"
+            className="border-border bg-background/20 backdrop-blur-sm text-foreground hover:bg-background/30 font-semibold px-8 py-4 rounded-full hover-lift"
           >
             <Download className="mr-2 h-5 w-5" />
             Download Resume

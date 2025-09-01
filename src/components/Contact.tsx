@@ -258,7 +258,7 @@ const Contact = () => {
               {/* Social Links */}
               <Card className="bg-gradient-primary border-0 shadow-strong">
                 <CardContent className="p-6 text-center">
-                  <h3 className="text-xl font-semibold text-primary-foreground mb-4">
+                  <h3 className="text-xl font-semibold text-accent-foreground mb-4">
                     Connect With Me
                   </h3>
                    <div className="flex justify-center space-x-4">
