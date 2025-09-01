@@ -7,6 +7,18 @@ import { Label } from "@/components/ui/label"
 import { useToast } from "@/hooks/use-toast"
 import { Send, Mail, Github, Linkedin, MapPin, Phone } from "lucide-react"
 
+// TikTok Icon SVG Component
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+  </svg>
+)
+
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -57,24 +69,40 @@ const Contact = () => {
 
     setIsSubmitting(true)
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Create mailto URL with pre-filled data
+      const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`)
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      )
+      const mailtoUrl = `mailto:devambassador@gmail.com?subject=${subject}&body=${body}`
+      
+      // Open email client
+      window.location.href = mailtoUrl
+      
       toast({
-        title: "Message sent successfully!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+        title: "Email client opened!",
+        description: "Your email client should open with the message pre-filled. Please send when ready.",
       })
       
       setFormData({ name: '', email: '', message: '' })
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "There was an issue opening your email client. Please try again.",
+        variant: "destructive"
+      })
+    } finally {
       setIsSubmitting(false)
-    }, 2000)
+    }
   }
 
   const contactInfo = [
     {
       icon: Mail,
       label: "Email",
-      value: "ambassador@example.com",
-      href: "mailto:ambassador@example.com"
+      value: "devambassador@gmail.com",
+      href: "mailto:devambassador@gmail.com"
     },
     {
       icon: Github,
@@ -233,32 +261,40 @@ const Contact = () => {
                   <h3 className="text-xl font-semibold text-primary-foreground mb-4">
                     Connect With Me
                   </h3>
-                  <div className="flex justify-center space-x-4">
-                    <Button
-                      variant="secondary"
-                      size="icon"
-                      className="w-12 h-12 hover-lift hover-glow"
-                      onClick={() => window.open('https://github.com/ambassador', '_blank')}
-                    >
-                      <Github className="h-5 w-5" />
-                    </Button>
-                    <Button
-                      variant="secondary"
-                      size="icon"
-                      className="w-12 h-12 hover-lift hover-glow"
-                      onClick={() => window.open('https://linkedin.com/in/ambassador', '_blank')}
-                    >
-                      <Linkedin className="h-5 w-5" />
-                    </Button>
-                    <Button
-                      variant="secondary"
-                      size="icon"
-                      className="w-12 h-12 hover-lift hover-glow"
-                      onClick={() => window.open('mailto:ambassador@example.com', '_blank')}
-                    >
-                      <Mail className="h-5 w-5" />
-                    </Button>
-                  </div>
+                   <div className="flex justify-center space-x-4">
+                     <Button
+                       variant="secondary"
+                       size="icon"
+                       className="w-12 h-12 hover-lift hover-glow"
+                       onClick={() => window.open('https://github.com/ambassador', '_blank')}
+                     >
+                       <Github className="h-5 w-5" />
+                     </Button>
+                     <Button
+                       variant="secondary"
+                       size="icon"
+                       className="w-12 h-12 hover-lift hover-glow"
+                       onClick={() => window.open('https://linkedin.com/in/ambassador', '_blank')}
+                     >
+                       <Linkedin className="h-5 w-5" />
+                     </Button>
+                     <Button
+                       variant="secondary"
+                       size="icon"
+                       className="w-12 h-12 hover-lift hover-glow"
+                       onClick={() => window.open('https://www.tiktok.com/@devambassador', '_blank')}
+                     >
+                       <TikTokIcon className="h-5 w-5" />
+                     </Button>
+                     <Button
+                       variant="secondary"
+                       size="icon"
+                       className="w-12 h-12 hover-lift hover-glow"
+                       onClick={() => window.open('mailto:devambassador@gmail.com', '_blank')}
+                     >
+                       <Mail className="h-5 w-5" />
+                     </Button>
+                   </div>
                 </CardContent>
               </Card>
 

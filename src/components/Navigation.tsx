@@ -49,7 +49,7 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <span className="text-2xl font-bold text-gradient-accent">
-              Ambassador
+              Dev_Ambassador
             </span>
           </div>
 

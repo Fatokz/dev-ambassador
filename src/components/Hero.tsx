@@ -5,7 +5,7 @@ import heroImage from "@/assets/hero-bg.jpg"
 
 const Hero = () => {
   const [typedText, setTypedText] = useState("")
-  const fullText = "Hi, I'm Ambassador 👋"
+  const fullText = "Hi, I'm Dev_Ambassador"
 
   useEffect(() => {
     let i = 0
@@ -89,10 +89,6 @@ const Hero = () => {
           </Button>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ArrowDown className="h-6 w-6 text-primary-foreground/60" />
-        </div>
       </div>
     </section>
   )
