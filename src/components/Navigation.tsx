@@ -19,18 +19,18 @@ const Navigation = () => {
   // Click outside to close mobile menu
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const nav = document.querySelector('nav')
+      const nav = document.querySelector("nav")
       if (nav && !nav.contains(event.target as Node) && isMobileMenuOpen) {
         setIsMobileMenuOpen(false)
       }
     }
 
     if (isMobileMenuOpen) {
-      document.addEventListener('mousedown', handleClickOutside)
+      document.addEventListener("mousedown", handleClickOutside)
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [isMobileMenuOpen])
 
@@ -56,11 +56,10 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/80 backdrop-blur-md shadow-soft border-b border-border/50"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-background/80 backdrop-blur-md shadow-soft border-b border-border/50"
+        : "bg-transparent"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -78,13 +77,15 @@ const Navigation = () => {
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className="relative px-3 py-2 text-sm font-medium text-foreground hover:text-accent transition-colors duration-200 group"
+                  className={`relative px-3 py-2 text-sm font-medium
+      ${isScrolled ? "text-gray-800 dark:text-gray-100" : "text-gray-900 dark:text-white"}
+      hover:text-accent transition-colors duration-200 group`}
                 >
                   {item.label}
-                  {/* Animated underline */}
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-accent transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
                 </button>
               ))}
+
             </div>
           </div>
 
@@ -94,7 +95,8 @@ const Navigation = () => {
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
-              className="hover-glow"
+              className={`hover-glow ${isScrolled ? "text-gray-800 dark:text-gray-100" : "text-white"
+                }`}
             >
               {theme === "light" ? (
                 <Moon className="h-5 w-5" />
@@ -109,6 +111,8 @@ const Navigation = () => {
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className={`${isScrolled ? "text-gray-800 dark:text-gray-100" : "text-white"
+                  }`}
               >
                 {isMobileMenuOpen ? (
                   <X className="h-6 w-6" />
@@ -128,7 +132,9 @@ const Navigation = () => {
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-foreground hover:text-accent hover:bg-accent/10 transition-colors duration-200 w-full text-left"
+                  className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left
+      ${isScrolled ? "text-gray-800 dark:text-gray-100" : "text-gray-900 dark:text-white"}
+      hover:text-accent hover:bg-accent/10 transition-colors duration-200`}
                 >
                   {item.label}
                 </button>

@@ -2,9 +2,11 @@ import { useEffect, useRef, useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Github, Eye } from "lucide-react"
+import { ExternalLink, Eye } from "lucide-react"
+import { FaGithub } from "react-icons/fa";
 
-import bankImage from "@/assets/project-bank.jpg"
+import portfolio from "@/assets/project-portfolio.png"
+import safecoin from "@/assets/project-safecoin.png"
 import assignmentImage from "@/assets/project-assignment.jpg"
 import invoiceImage from "@/assets/project-invoice.jpg"
 import farmImage from "@/assets/project-farm.jpg"
@@ -32,21 +34,21 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "Developer Portfolio",
+      title: "Previous Portfolio",
       description: "A modern, responsive portfolio website showcasing professional projects and skills with smooth animations and dark/light theme support.",
-      image: bankImage, // Will be replaced with portfolio image
+      image: portfolio, 
       technologies: ["React", "Tailwind", "Vite", "JavaScript"],
-      liveDemo: "#",
-      github: "#",
+      liveDemo: "https://abtechcraft.vercel.app/",
+      github: "https://github.com/Fatokz/AbTech",
       featured: true
     },
     {
       title: "Safcoin Bank App",
       description: "A comprehensive banking platform featuring secure transactions, account management, and financial validation systems built with React and Firebase.",
-      image: bankImage,
+      image: safecoin,
       technologies: ["React", "Firebase", "TailwindCSS", "JavaScript"],
-      liveDemo: "#",
-      github: "#",
+      liveDemo: "https://safecoinn.vercel.app/",
+      github: "https://github.com/Fatokz/Bank-App",
       featured: true
     },
     {
@@ -129,7 +131,7 @@ const Projects = () => {
                       className="bg-background/90 hover:bg-background shadow-strong"
                       onClick={() => window.open(project.github, '_blank')}
                     >
-                      <Github className="mr-2 h-4 w-4" />
+                      <FaGithub className="mr-2 h-4 w-4" />
                       Code
                     </Button>
                   </div>
@@ -184,7 +186,7 @@ const Projects = () => {
                       className="flex-1"
                       onClick={() => window.open(project.github, '_blank')}
                     >
-                      <Github className="mr-2 h-4 w-4" />
+                      <FaGithub className="mr-2 h-4 w-4" />
                       GitHub
                     </Button>
                   </div>
@@ -201,7 +203,7 @@ const Projects = () => {
               className="hover-lift shadow-medium"
               onClick={() => window.open('#', '_blank')}
             >
-              <Github className="mr-2 h-5 w-5" />
+              <FaGithub className="mr-2 h-5 w-5" />
               View All Projects on GitHub
             </Button>
           </div>

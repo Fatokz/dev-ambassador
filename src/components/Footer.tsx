@@ -49,7 +49,7 @@ const Footer = () => {
           <div className="text-center md:text-right">
             <h4 className="font-semibold text-foreground mb-4">Get in Touch</h4>
             <div className="space-y-2 text-muted-foreground">
-              <p>ambassador@example.com</p>
+              <p>devambassador@gmail.com</p>
               <p>Available for remote work</p>
               <p>Open to new opportunities</p>
             </div>
@@ -61,11 +61,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center justify-between">
             {/* Copyright */}
             <div className="flex items-center text-muted-foreground mb-4 md:mb-0">
-              <span>© {currentYear} Ambassador. All rights reserved.</span>
-              <span className="mx-2">•</span>
-              <span className="flex items-center">
-                Made with <Heart className="h-4 w-4 text-red-500 mx-1" /> using React & TailwindCSS
-              </span>
+              <span>© {currentYear} Dev_Ambassador. All rights reserved.</span>
             </div>
 
             {/* Back to Top */}

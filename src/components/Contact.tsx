@@ -5,7 +5,12 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/hooks/use-toast"
-import { Send, Mail, Github, Linkedin, MapPin, Phone } from "lucide-react"
+import { Send, Phone } from "lucide-react";
+import { MdLocationPin } from "react-icons/md";
+import { IoMdMail } from "react-icons/io";
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+
 
 // TikTok Icon SVG Component
 const TikTokIcon = ({ className }: { className?: string }) => (
@@ -15,7 +20,7 @@ const TikTokIcon = ({ className }: { className?: string }) => (
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
   </svg>
 )
 
@@ -57,7 +62,7 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: "Please fill in all fields",
@@ -76,15 +81,15 @@ const Contact = () => {
         `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       )
       const mailtoUrl = `mailto:devambassador@gmail.com?subject=${subject}&body=${body}`
-      
+
       // Open email client
       window.location.href = mailtoUrl
-      
+
       toast({
         title: "Email client opened!",
         description: "Your email client should open with the message pre-filled. Please send when ready.",
       })
-      
+
       setFormData({ name: '', email: '', message: '' })
     } catch (error) {
       toast({
@@ -99,25 +104,25 @@ const Contact = () => {
 
   const contactInfo = [
     {
-      icon: Mail,
+      icon: IoMdMail,
       label: "Email",
       value: "devambassador@gmail.com",
       href: "mailto:devambassador@gmail.com"
     },
     {
-      icon: Github,
+      icon: FaGithub ,
       label: "GitHub",
-      value: "@ambassador",
-      href: "https://github.com/ambassador"
+      value: "@Fatokz",
+      href: "https://github.com/Fatokz"
     },
     {
-      icon: Linkedin,
+      icon: FaLinkedin,
       label: "LinkedIn",
       value: "Ambassador Dev",
       href: "https://linkedin.com/in/ambassador"
     },
     {
-      icon: MapPin,
+      icon: MdLocationPin,
       label: "Location",
       value: "Available Globally",
       href: null
@@ -134,7 +139,7 @@ const Contact = () => {
               Get In <span className="text-gradient-accent">Touch</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Have a project in mind or want to collaborate? I'd love to hear from you. 
+              Have a project in mind or want to collaborate? I'd love to hear from you.
               Let's build something amazing together!
             </p>
             <div className="w-24 h-1 bg-accent mx-auto rounded-full mt-6" />
@@ -148,7 +153,7 @@ const Contact = () => {
                   <h3 className="text-2xl font-semibold text-foreground mb-6">
                     Send a Message
                   </h3>
-                  
+
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
                       <Label htmlFor="name" className="text-foreground font-medium">
@@ -227,7 +232,7 @@ const Contact = () => {
                   <h3 className="text-2xl font-semibold text-foreground mb-6">
                     Contact Information
                   </h3>
-                  
+
                   <div className="space-y-4">
                     {contactInfo.map((info, index) => (
                       <div key={info.label} className="flex items-center space-x-4">
@@ -261,40 +266,40 @@ const Contact = () => {
                   <h3 className="text-xl font-semibold text-accent-foreground mb-4">
                     Connect With Me
                   </h3>
-                   <div className="flex justify-center space-x-4">
-                     <Button
-                       variant="secondary"
-                       size="icon"
-                       className="w-12 h-12 hover-lift hover-glow"
-                       onClick={() => window.open('https://github.com/ambassador', '_blank')}
-                     >
-                       <Github className="h-5 w-5" />
-                     </Button>
-                     <Button
-                       variant="secondary"
-                       size="icon"
-                       className="w-12 h-12 hover-lift hover-glow"
-                       onClick={() => window.open('https://linkedin.com/in/ambassador', '_blank')}
-                     >
-                       <Linkedin className="h-5 w-5" />
-                     </Button>
-                     <Button
-                       variant="secondary"
-                       size="icon"
-                       className="w-12 h-12 hover-lift hover-glow"
-                       onClick={() => window.open('https://www.tiktok.com/@devambassador', '_blank')}
-                     >
-                       <TikTokIcon className="h-5 w-5" />
-                     </Button>
-                     <Button
-                       variant="secondary"
-                       size="icon"
-                       className="w-12 h-12 hover-lift hover-glow"
-                       onClick={() => window.open('mailto:devambassador@gmail.com', '_blank')}
-                     >
-                       <Mail className="h-5 w-5" />
-                     </Button>
-                   </div>
+                  <div className="flex justify-center space-x-4">
+                    <Button
+                      variant="secondary"
+                      size="icon"
+                      className="w-12 h-12 hover-lift hover-glow"
+                      onClick={() => window.open('https://github.com/Fatokz', '_blank')}
+                    >
+                      <FaGithub  className="h-5 w-5" />
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      size="icon"
+                      className="w-12 h-12 hover-lift hover-glow"
+                      onClick={() => window.open('https://linkedin.com/in/ambassador', '_blank')}
+                    >
+                      <FaLinkedin className="h-5 w-5" />
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      size="icon"
+                      className="w-12 h-12 hover-lift hover-glow"
+                      onClick={() => window.open('https://www.tiktok.com/@dev_ambassador', '_blank')}
+                    >
+                      <TikTokIcon className="h-5 w-5" />
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      size="icon"
+                      className="w-12 h-12 hover-lift hover-glow"
+                      onClick={() => window.open('mailto:devambassador@gmail.com', '_blank')}
+                    >
+                      <IoMdMail className="h-5 w-5" />
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
 
@@ -305,7 +310,7 @@ const Contact = () => {
                     Quick Response Guaranteed
                   </h3>
                   <p className="text-accent-foreground/90">
-                    I typically respond to all inquiries within 24 hours. 
+                    I typically respond to all inquiries within 24 hours.
                     Looking forward to hearing from you!
                   </p>
                 </CardContent>
