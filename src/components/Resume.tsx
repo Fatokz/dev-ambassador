@@ -173,10 +173,10 @@ const Resume = () => {
               {/* Quick Contact */}
               <Card className="bg-gradient-primary border-0 shadow-strong">
                 <CardContent className="p-6 text-center">
-                  <h3 className="text-xl font-semibold text-primary-foreground mb-3">
+                  <h3 className="text-xl font-semibold text-accent-foreground mb-3">
                     Let's Connect
                   </h3>
-                  <p className="text-primary-foreground/80 mb-4">
+                  <p className="text-accent-foreground/90 mb-4">
                     Interested in working together? I'd love to hear from you!
                   </p>
                   <Button 

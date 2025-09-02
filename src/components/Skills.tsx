@@ -169,10 +169,10 @@ const Skills = () => {
             <Card className="bg-gradient-primary border-0 shadow-strong max-w-2xl mx-auto">
               <CardContent className="p-8">
                 <Zap className="h-12 w-12 text-accent mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-primary-foreground mb-3">
+                <h3 className="text-2xl font-bold text-accent-foreground mb-3">
                   Always Learning
                 </h3>
-                <p className="text-primary-foreground/80 text-lg">
+                <p className="text-accent-foreground/90 text-lg">
                   Technology evolves rapidly, and so do I. I'm constantly exploring new tools, 
                   frameworks, and best practices to stay at the forefront of modern development.
                 </p>

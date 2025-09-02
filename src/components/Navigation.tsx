@@ -78,7 +78,7 @@ const Navigation = () => {
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className="relative px-3 py-2 text-sm font-medium text-foreground/90 hover:text-accent transition-colors duration-200 group"
+                  className="relative px-3 py-2 text-sm font-medium text-foreground hover:text-accent transition-colors duration-200 group"
                 >
                   {item.label}
                   {/* Animated underline */}
