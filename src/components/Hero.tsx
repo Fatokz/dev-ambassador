@@ -50,7 +50,7 @@ const Hero = () => {
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         {/* Typing Animation */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-          <span className="text-foreground">
+          <span className="text-white">
             {typedText}
             <span className="animate-pulse">|</span>
           </span>
@@ -62,7 +62,7 @@ const Hero = () => {
         </h2>
 
         {/* Subtext */}
-        <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-up">
+        <p className="text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-up">
           I design and build interactive, scalable, and user-friendly software experiences 
           that solve real problems and empower people to achieve their goals.
         </p>
@@ -82,7 +82,7 @@ const Hero = () => {
             onClick={downloadResume}
             variant="outline"
             size="lg"
-            className="border-border bg-background/20 backdrop-blur-sm text-foreground hover:bg-background/30 font-semibold px-8 py-4 rounded-full hover-lift"
+            className="border-white/30 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 font-semibold px-8 py-4 rounded-full hover-lift"
           >
             <Download className="mr-2 h-5 w-5" />
             Download Resume
