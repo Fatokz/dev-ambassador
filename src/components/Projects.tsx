@@ -32,6 +32,15 @@ const Projects = () => {
 
   const projects = [
     {
+      title: "Developer Portfolio",
+      description: "A modern, responsive portfolio website showcasing professional projects and skills with smooth animations and dark/light theme support.",
+      image: bankImage, // Will be replaced with portfolio image
+      technologies: ["React", "Tailwind", "Vite", "JavaScript"],
+      liveDemo: "#",
+      github: "#",
+      featured: true
+    },
+    {
       title: "Safcoin Bank App",
       description: "A comprehensive banking platform featuring secure transactions, account management, and financial validation systems built with React and Firebase.",
       image: bankImage,

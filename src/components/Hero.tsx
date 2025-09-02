@@ -50,7 +50,7 @@ const Hero = () => {
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         {/* Typing Animation */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-          <span className="text-primary-foreground">
+          <span className="text-foreground">
             {typedText}
             <span className="animate-pulse">|</span>
           </span>
@@ -62,7 +62,7 @@ const Hero = () => {
         </h2>
 
         {/* Subtext */}
-        <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-up">
+        <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-up">
           I design and build interactive, scalable, and user-friendly software experiences 
           that solve real problems and empower people to achieve their goals.
         </p>
