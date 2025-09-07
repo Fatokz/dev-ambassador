@@ -31,44 +31,82 @@ const Experience = () => {
       location: "Remote",
       duration: "2022 - Present",
       type: "Self-Directed",
-      description: "Developed and deployed multiple full-stack web applications using React, Firebase, and Django. Built responsive banking platforms, student productivity tools, and business automation systems.",
+      description: "Developed and deployed multiple full-stack web applications using React, Firebase, and TypeScript. Built responsive banking platforms, student productivity tools, and business automation systems.",
       achievements: [
         "Built 10+ production-ready web applications",
         "Implemented secure authentication and payment systems",
         "Achieved 95%+ user satisfaction across all projects",
         "Optimized applications for performance and scalability"
       ],
-      technologies: ["React", "Firebase", "Django", "TailwindCSS", "TypeScript"]
+      technologies: ["React", "Firebase", "TailwindCSS", "TypeScript", "Git"]
+    },
+    {
+      title: "Fullstack Developer",
+      company: "E-Library Management System | Lead City University",
+      location: "University",
+      duration: "2024 - 2025",
+      type: "Academic Project",
+      description: "Designed and developed a fullstack E-Library Management System with integrated To-Do list functionality to help students manage academic tasks and access digital resources. Worked across both frontend and backend to ensure scalability, usability, and secure data management.",
+      achievements: [
+        "Built a robust backend with authentication, role-based access, and CRUD operations for library resources",
+        "Developed a responsive frontend for browsing, borrowing, and managing digital resources",
+        "Implemented a student To-Do list feature to track assignments and deadlines",
+        "Optimized database queries, reducing response times by 35%",
+        "Collaborated with a project team to meet academic requirements and deliver within deadlines"
+      ],
+      technologies: [
+        "React",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "JavaScript",
+        "TailwindCSS",
+        "Git"
+      ],
     },
     {
       title: "Frontend Developer",
-      company: "Academic Projects",
-      location: "University",
-      duration: "2021 - 2022",
-      type: "Academic",
-      description: "Led frontend development for various academic projects including banking applications, inventory management systems, and student portals. Collaborated with teams to deliver pixel-perfect interfaces.",
+      company: "Changee Web-App",
+      location: "Remote",
+      duration: "2024 - 2025",
+      type: "Project",
+      description: "Developed and maintained a web application focused on transportation, fintech, and POS solutions. Built responsive, user-friendly interfaces that enabled seamless transactions and improved customer experience.",
       achievements: [
-        "Converted 15+ Figma designs to responsive interfaces",
-        "Reduced load times by 40% through optimization",
-        "Mentored 5+ junior developers in React best practices",
-        "Implemented accessibility standards (WCAG 2.1)"
+        "Implemented transaction history and POS features with real-time updates",
+        "Enhanced user experience with responsive layouts and smooth navigation",
+        "Integrated fintech workflows including deposits, transfers, and airtime payments",
+        "Collaborated on UI/UX refinements, improving user retention and satisfaction"
       ],
-      technologies: ["React", "JavaScript", "CSS3", "Material-UI", "Git"]
+      technologies: [
+        "React",
+        "JavaScript",
+        "TailwindCSS",
+        "Firebase",
+        "Figma",
+        "Git"
+      ]
     },
     {
-      title: "UI/UX Developer",
-      company: "Freelance Projects",
+      title: "Co-Founder & Frontend Developer",
+      company: "The Big 8",
       location: "Remote",
-      duration: "2020 - 2022",
-      type: "Freelance",
-      description: "Worked with clients to transform their design concepts into interactive, user-friendly web interfaces. Specialized in creating smooth animations and responsive layouts.",
+      duration: "2025 – Present",
+      type: "Startup",
+      description: "Co-founded The Big 8, a tech startup bringing together eight diverse experts to deliver data-driven solutions for businesses. Led frontend development and product design initiatives, ensuring modern, scalable, and user-focused interfaces across client projects and internal platforms.",
       achievements: [
-        "Delivered 20+ client projects on time and within budget",
-        "Improved user engagement by 60% through UX optimizations",
-        "Created reusable component libraries",
-        "Maintained 98% client satisfaction rating"
+        "Built and maintained responsive web applications tailored to industries including fintech, cloud, and emerging technologies",
+        "Designed and implemented component-based UI systems with React and TailwindCSS, improving scalability and design consistency",
+        "Collaborated with cross-functional team members (engineers, data scientists, designers) to deliver client-ready solutions from concept to deployment",
+        "Streamlined user experience through thoughtful UI/UX refinements, increasing engagement and retention across platforms"
       ],
-      technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Figma"]
+      technologies: [
+        "React",
+        "JavaScript",
+        "TailwindCSS",
+        "Firebase",
+        "Figma",
+        "Git"
+      ]
     }
   ]
 

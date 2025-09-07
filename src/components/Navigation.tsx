@@ -9,9 +9,7 @@ const Navigation = () => {
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 50)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -24,14 +22,10 @@ const Navigation = () => {
         setIsMobileMenuOpen(false)
       }
     }
-
     if (isMobileMenuOpen) {
       document.addEventListener("mousedown", handleClickOutside)
     }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside)
-    }
+    return () => document.removeEventListener("mousedown", handleClickOutside)
   }, [isMobileMenuOpen])
 
   const navItems = [
@@ -57,8 +51,8 @@ const Navigation = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? "bg-background/80 backdrop-blur-md shadow-soft border-b border-border/50"
-        : "bg-transparent"
+          ? "bg-background/80 backdrop-blur-md shadow-soft border-b border-border/50"
+          : "bg-transparent"
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,15 +71,16 @@ const Navigation = () => {
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className={`relative px-3 py-2 text-sm font-medium
-      ${isScrolled ? "text-gray-800 dark:text-gray-100" : "text-gray-900 dark:text-white"}
-      hover:text-accent transition-colors duration-200 group`}
+                  className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 group
+                    ${isScrolled
+                      ? "text-gray-900 dark:text-gray-100"
+                      : "text-white"
+                    } hover:text-accent`}
                 >
                   {item.label}
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-accent transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
                 </button>
               ))}
-
             </div>
           </div>
 
@@ -95,7 +90,7 @@ const Navigation = () => {
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
-              className={`hover-glow ${isScrolled ? "text-gray-800 dark:text-gray-100" : "text-white"
+              className={`hover-glow ${isScrolled ? "text-gray-900 dark:text-gray-100" : "text-white"
                 }`}
             >
               {theme === "light" ? (
@@ -111,7 +106,7 @@ const Navigation = () => {
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`${isScrolled ? "text-gray-800 dark:text-gray-100" : "text-white"
+                className={`${isScrolled ? "text-gray-900 dark:text-gray-100" : "text-white"
                   }`}
               >
                 {isMobileMenuOpen ? (
@@ -132,9 +127,9 @@ const Navigation = () => {
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left
-      ${isScrolled ? "text-gray-800 dark:text-gray-100" : "text-gray-900 dark:text-white"}
-      hover:text-accent hover:bg-accent/10 transition-colors duration-200`}
+                  className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors duration-200
+            ${theme === "light" ? "text-gray-900" : "text-gray-100"}
+            hover:text-accent hover:bg-accent/10`}
                 >
                   {item.label}
                 </button>
@@ -142,6 +137,7 @@ const Navigation = () => {
             </div>
           </div>
         )}
+
       </div>
     </nav>
   )

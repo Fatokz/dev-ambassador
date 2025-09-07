@@ -69,15 +69,15 @@ const Projects = () => {
       github: "#",
       featured: false
     },
-    {
-      title: "FarmX Inventory",
-      description: "Agricultural produce inventory management system with media upload capabilities and real-time tracking for farm operations.",
-      image: farmImage,
-      technologies: ["Django", "PostgreSQL", "React", "AWS S3"],
-      liveDemo: "#",
-      github: "#",
-      featured: false
-    }
+    // {
+    //   title: "FarmX Inventory",
+    //   description: "Agricultural produce inventory management system with media upload capabilities and real-time tracking for farm operations.",
+    //   image: farmImage,
+    //   technologies: ["Django", "PostgreSQL", "React", "AWS S3"],
+    //   liveDemo: "#",
+    //   github: "#",
+    //   featured: false
+    // }
   ]
 
   return (
@@ -120,7 +120,7 @@ const Projects = () => {
                     <Button 
                       size="sm" 
                       className="bg-accent hover:bg-accent-hover text-accent-foreground shadow-strong"
-                      onClick={() => window.open(project.liveDemo, '_blank')}
+                      onClick={() => window.open(project.liveDemo, '_self')}
                     >
                       <Eye className="mr-2 h-4 w-4" />
                       Live Demo
@@ -129,7 +129,7 @@ const Projects = () => {
                       size="sm" 
                       variant="outline"
                       className="bg-background/90 hover:bg-background shadow-strong"
-                      onClick={() => window.open(project.github, '_blank')}
+                      onClick={() => window.open(project.github, '_self')}
                     >
                       <FaGithub className="mr-2 h-4 w-4" />
                       Code
@@ -175,7 +175,7 @@ const Projects = () => {
                       variant="default"
                       size="sm"
                       className="bg-accent hover:bg-accent-hover text-accent-foreground flex-1"
-                      onClick={() => window.open(project.liveDemo, '_blank')}
+                      onClick={() => window.open(project.liveDemo, '_self')}
                     >
                       <ExternalLink className="mr-2 h-4 w-4" />
                       Live Demo
@@ -184,7 +184,7 @@ const Projects = () => {
                       variant="outline"
                       size="sm"
                       className="flex-1"
-                      onClick={() => window.open(project.github, '_blank')}
+                      onClick={() => window.open(project.github, '_self')}
                     >
                       <FaGithub className="mr-2 h-4 w-4" />
                       GitHub
@@ -201,7 +201,7 @@ const Projects = () => {
               variant="outline" 
               size="lg"
               className="hover-lift shadow-medium"
-              onClick={() => window.open('#', '_blank')}
+              onClick={() => window.open('#', '_self')}
             >
               <FaGithub className="mr-2 h-5 w-5" />
               View All Projects on GitHub
