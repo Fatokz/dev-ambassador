@@ -7,7 +7,7 @@ import { FaGithub } from "react-icons/fa";
 
 import portfolio from "@/assets/project-portfolio.png"
 import safecoin from "@/assets/project-safecoin.png"
-import assignmentImage from "@/assets/project-assignment.jpg"
+import thrivewithnatureImage from "@/assets/project-thrivewithnatureImage.png"
 import invoiceImage from "@/assets/project-invoice.jpg"
 import farmImage from "@/assets/project-farm.jpg"
 
@@ -52,11 +52,11 @@ const Projects = () => {
       featured: true
     },
     {
-      title: "Assignment Assistant",
-      description: "Student productivity platform with assignment tracking, CGPA calculator, and personal diary features to help students stay organized.",
-      image: assignmentImage,
-      technologies: ["React", "Node.js", "MongoDB", "Express"],
-      liveDemo: "#",
+      title: "Thrive With Nature",
+      description: "Holistic health and wellness platform offering natural remedies, herbal products, and educational resources for healthy living.",
+      image: thrivewithnatureImage,
+      technologies: ["React", "TailwindCSS", "Vercel"],
+      liveDemo: "https://thrivewithnature.vercel.app/",
       github: "#",
       featured: true
     },
