@@ -51,15 +51,15 @@ const Projects = () => {
       github: "https://github.com/Fatokz/Bank-App",
       featured: true
     },
-    {
-      title: "Thrive With Nature",
-      description: "Holistic health and wellness platform offering natural remedies, herbal products, and educational resources for healthy living.",
-      image: thrivewithnatureImage,
-      technologies: ["React", "TailwindCSS", "Vercel"],
-      liveDemo: "https://thrivewithnature.vercel.app/",
-      github: "#",
-      featured: true
-    },
+    // {
+    //   title: "Thrive With Nature",
+    //   description: "Holistic health and wellness platform offering natural remedies, herbal products, and educational resources for healthy living.",
+    //   image: thrivewithnatureImage,
+    //   technologies: ["React", "TailwindCSS", "Vercel"],
+    //   liveDemo: "https://thrivewithnature.vercel.app/",
+    //   github: "#",
+    //   featured: true
+    // },
     {
       title: "AutoInvoice",
       description: "Freelancer-focused invoice generator with automated calculations, client branding customization, and payment reminder systems.",
