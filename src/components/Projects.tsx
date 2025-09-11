@@ -37,7 +37,7 @@ const Projects = () => {
       title: "Safcoin Bank App",
       description: "A comprehensive banking platform featuring secure transactions, account management, and financial validation systems built with React and Firebase.",
       image: safecoin,
-      technologies: ["HTML", "CSS", "Bootstrap", "Firebase", "JavaScript"],
+      technologies: ["React", "TailwindCSS", "Firebase", "JavaScript"],
       liveDemo: "https://safecoinn.vercel.app/",
       github: "https://github.com/Fatokz/Bank-App",
       featured: true
@@ -46,7 +46,7 @@ const Projects = () => {
       title: "Previous Portfolio",
       description: "A modern, responsive portfolio website showcasing professional projects and skills with smooth animations and dark/light theme support.",
       image: portfolio, 
-      technologies: ["React", "Tailwind", "Vite", "JavaScript"],
+      technologies: ["React", "TailwindCSS", "Vite", "JavaScript"],
       liveDemo: "https://abtechcraft.vercel.app/",
       github: "https://github.com/Fatokz/AbTech",
       featured: true
