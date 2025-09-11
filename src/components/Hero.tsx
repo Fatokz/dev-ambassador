@@ -33,13 +33,13 @@ const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
         <div className="absolute inset-0 bg-gradient-hero opacity-90" />
       </div>
-      
+
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl animate-pulse" />
@@ -58,12 +58,12 @@ const Hero = () => {
 
         {/* Tagline */}
         <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-accent mb-4 animate-fade-in">
-          Software Engineer | Problem Solver | Builder of Practical Solutions
+          Co-Founder | Software Engineer | Problem Solver | Builder of Practical Solutions
         </h2>
 
         {/* Subtext */}
         <p className="text-lg md:text-xl text-white/80 mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-up">
-          I design and build interactive, scalable, and user-friendly software experiences 
+          I design and build interactive, scalable, and user-friendly software experiences
           that solve real problems and empower people to achieve their goals.
         </p>
 
@@ -77,7 +77,7 @@ const Hero = () => {
             <ExternalLink className="mr-2 h-5 w-5" />
             View My Work
           </Button>
-          
+
           <Button
             onClick={downloadResume}
             variant="outline"
