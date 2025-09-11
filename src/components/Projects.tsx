@@ -8,7 +8,7 @@ import { FaGithub } from "react-icons/fa";
 import portfolio from "@/assets/project-portfolio.png"
 import safecoin from "@/assets/project-safecoin.png"
 import thrivewithnatureImage from "@/assets/project-thrivewithnatureImage.png"
-import invoiceImage from "@/assets/project-invoice.jpg"
+import silvanusPrintsImage from "@/assets/silvanusPrintsImage.png"
 import farmImage from "@/assets/project-farm.jpg"
 
 const Projects = () => {
@@ -34,21 +34,21 @@ const Projects = () => {
 
   const projects = [
     {
+      title: "Safcoin Bank App",
+      description: "A comprehensive banking platform featuring secure transactions, account management, and financial validation systems built with React and Firebase.",
+      image: safecoin,
+      technologies: ["HTML", "CSS", "Bootstrap", "Firebase", "JavaScript"],
+      liveDemo: "https://safecoinn.vercel.app/",
+      github: "https://github.com/Fatokz/Bank-App",
+      featured: true
+    },
+    {
       title: "Previous Portfolio",
       description: "A modern, responsive portfolio website showcasing professional projects and skills with smooth animations and dark/light theme support.",
       image: portfolio, 
       technologies: ["React", "Tailwind", "Vite", "JavaScript"],
       liveDemo: "https://abtechcraft.vercel.app/",
       github: "https://github.com/Fatokz/AbTech",
-      featured: true
-    },
-    {
-      title: "Safcoin Bank App",
-      description: "A comprehensive banking platform featuring secure transactions, account management, and financial validation systems built with React and Firebase.",
-      image: safecoin,
-      technologies: ["React", "Firebase", "TailwindCSS", "JavaScript"],
-      liveDemo: "https://safecoinn.vercel.app/",
-      github: "https://github.com/Fatokz/Bank-App",
       featured: true
     },
     // {
@@ -61,14 +61,15 @@ const Projects = () => {
     //   featured: true
     // },
     {
-      title: "AutoInvoice",
-      description: "Freelancer-focused invoice generator with automated calculations, client branding customization, and payment reminder systems.",
-      image: invoiceImage,
-      technologies: ["React", "TypeScript", "Vite", "Supabase"],
-      liveDemo: "#",
-      github: "#",
-      featured: false
-    },
+      title: "Silvanus Prints",
+      description: "A branding and printing service website showcasing services, portfolio, and contact form with WhatsApp integration.",
+      image: silvanusPrintsImage, 
+      technologies: ["React", "TypeScript", "Vite", "TailwindCSS","ImgBB"],
+      liveDemo: "https://silvanusprints.vercel.app/",
+      github: "#", 
+      featured: true
+    }
+
     // {
     //   title: "FarmX Inventory",
     //   description: "Agricultural produce inventory management system with media upload capabilities and real-time tracking for farm operations.",
