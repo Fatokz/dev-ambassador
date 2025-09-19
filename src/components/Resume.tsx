@@ -8,7 +8,7 @@ const Resume = () => {
   const ref = useRef<HTMLDivElement>(null)
 
   // Your pre-uploaded resume (place Ambassador_Resume.pdf in /public folder)
-  const resumeUrl = "/Dev_Ambassador_Resume.docx"
+  const resumeUrl = "/Fatokun_Emmanuel_Resume.pdf"
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -27,7 +27,7 @@ const Resume = () => {
   const downloadResume = () => {
     const a = document.createElement("a")
     a.href = resumeUrl
-    a.download = "Dev_Ambassador_Resume.pdf"
+    a.download = "Fatokun_Emmanuel_Resume.pdf"
     document.body.appendChild(a)
     a.click()
     document.body.removeChild(a)
@@ -79,7 +79,7 @@ const Resume = () => {
                     Resume Ready
                   </h3>
                   <p className="text-muted-foreground mb-6">
-                    File: Dev_Ambassador_Resume.pdf
+                    File: Fatokun_Emmanuel_Resume.pdf
                   </p>
                   <div className="flex gap-4 justify-center">
                     <Button

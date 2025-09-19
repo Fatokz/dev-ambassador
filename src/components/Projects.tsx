@@ -56,7 +56,7 @@ const Projects = () => {
     //   description: "Holistic health and wellness platform offering natural remedies, herbal products, and educational resources for healthy living.",
     //   image: thrivewithnatureImage,
     //   technologies: ["React", "TailwindCSS", "Vercel"],
-    //   liveDemo: "https://thrivewithnature.vercel.app/",
+    //   liveDemo: "https://booksync-amb.vercel.app/",
     //   github: "#",
     //   featured: true
     // },
