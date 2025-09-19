@@ -7,7 +7,7 @@ import { FaGithub } from "react-icons/fa";
 
 import portfolio from "@/assets/project-portfolio.png"
 import safecoin from "@/assets/project-safecoin.png"
-import thrivewithnatureImage from "@/assets/project-thrivewithnatureImage.png"
+import eLibraryImage from "@/assets/eLibraryImage.png"
 import silvanusPrintsImage from "@/assets/silvanusPrintsImage.png"
 import farmImage from "@/assets/project-farm.jpg"
 
@@ -51,15 +51,15 @@ const Projects = () => {
       github: "https://github.com/Fatokz/AbTech",
       featured: true
     },
-    // {
-    //   title: "Thrive With Nature",
-    //   description: "Holistic health and wellness platform offering natural remedies, herbal products, and educational resources for healthy living.",
-    //   image: thrivewithnatureImage,
-    //   technologies: ["React", "TailwindCSS", "Vercel"],
-    //   liveDemo: "https://booksync-amb.vercel.app/",
-    //   github: "#",
-    //   featured: true
-    // },
+    {
+      title: "E-Library Management",
+      description: "A digital library platform that allows users to browse, borrow, and manage books online, with admin control for managing inventory and users.",
+      image: eLibraryImage, 
+      technologies: ["React", "TypeScript", "TailwindCSS", "Vite", "MongoDB", "Express", "Node.js"], 
+      liveDemo: "https://booksync-amb.vercel.app/", 
+      github: "#", 
+      featured: true
+    },
     {
       title: "Silvanus Prints",
       description: "A branding and printing service website showcasing services, portfolio, and contact form with WhatsApp integration.",
