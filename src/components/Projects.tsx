@@ -39,7 +39,8 @@ const Projects = () => {
       image: safecoin,
       technologies: ["React", "TailwindCSS", "Firebase", "JavaScript"],
       liveDemo: "https://safecoinn.vercel.app/",
-      github: "https://github.com/Fatokz/Bank-App",
+      // github: "https://github.com/Fatokz/Bank-App",
+      github: "#",
       featured: true
     },
     {
@@ -48,7 +49,8 @@ const Projects = () => {
       image: portfolio, 
       technologies: ["React", "TailwindCSS", "Vite", "JavaScript"],
       liveDemo: "https://abtechcraft.vercel.app/",
-      github: "https://github.com/Fatokz/AbTech",
+      github: "#",
+      // github: "https://github.com/Fatokz/AbTech",
       featured: true
     },
     {

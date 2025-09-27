@@ -44,25 +44,25 @@ const Skills = () => {
     {
       title: "Backend Development", 
       icon: Server,
-      skills: ["Node.js", "Django", "Express", "REST APIs", "GraphQL", "Python"],
+      skills: ["Node.js", "Express", "REST APIs", "MongoDB"],
       color: "text-green-500"
     },
     {
       title: "Database & Storage",
       icon: Database,
-      skills: ["Firebase", "PostgreSQL", "MongoDB", "MySQL", "Supabase", "Redis"],
+      skills: ["Firebase", "MongoDB", "Supabase", "Redis"],
       color: "text-purple-500"
     },
     {
       title: "Tools & Platforms",
       icon: Cloud,
-      skills: ["Git", "AWS", "Vercel", "Docker", "Vite", "Webpack"],
+      skills: ["Git", "Vercel", "Docker", "Vite", "Webpack"],
       color: "text-orange-500"
     },
     {
       title: "Design & UI/UX",
       icon: Palette,
-      skills: ["Figma", "Adobe XD", "Responsive Design", "User Experience", "Prototyping"],
+      skills: ["Figma", "Responsive Design", "User Experience"],
       color: "text-pink-500"
     },
     {
@@ -78,7 +78,6 @@ const Skills = () => {
     { name: "TypeScript", level: 90, color: "bg-blue-600" },
     { name: "TailwindCSS", level: 95, color: "bg-cyan-500" },
     { name: "Firebase", level: 85, color: "bg-orange-500" },
-    { name: "Django", level: 80, color: "bg-green-600" },
     { name: "System Design", level: 75, color: "bg-purple-500" }
   ]
 

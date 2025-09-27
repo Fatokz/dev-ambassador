@@ -118,8 +118,8 @@ const Contact = () => {
     {
       icon: FaLinkedin,
       label: "LinkedIn",
-      value: "Ambassador Dev",
-      href: "https://linkedin.com/in/ambassador"
+      value: "Fatokun Emmanuel",
+      href: "https://linkedin.com/in/fatokun-emmanuel"
     },
     {
       icon: MdLocationPin,
@@ -279,7 +279,7 @@ const Contact = () => {
                       variant="secondary"
                       size="icon"
                       className="w-12 h-12 hover-lift hover-glow"
-                      onClick={() => window.open('https://linkedin.com/in/ambassador', '_blank')}
+                      onClick={() => window.open('https://linkedin.com/in/fatokun-emmanuel', '_blank')}
                     >
                       <FaLinkedin className="h-5 w-5" />
                     </Button>
