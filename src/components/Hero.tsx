@@ -58,7 +58,7 @@ const Hero = () => {
 
         {/* Tagline */}
         <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-accent mb-4 animate-fade-in">
-          Co-Founder | Software Engineer | Problem Solver | Builder of Practical Solutions
+          Software Engineer | Problem Solver | Builder of Practical Solutions | Co-Founder at thebig8
         </h2>
 
         {/* Subtext */}
