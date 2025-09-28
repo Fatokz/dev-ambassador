@@ -40,7 +40,7 @@ const Resume = () => {
   const resumeHighlights = [
     "3+ years of software development experience",
     "10+ completed projects across various domains",
-    "Proficient in React, TypeScript, Django, Firebase",
+    "Proficient in React, TypeScript, Firebase",
     "Strong problem-solving and analytical skills",
     "Experience with both frontend and backend development",
     "Passionate about creating user-centered solutions",

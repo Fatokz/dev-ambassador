@@ -76,7 +76,7 @@ const Projects = () => {
     //   title: "FarmX Inventory",
     //   description: "Agricultural produce inventory management system with media upload capabilities and real-time tracking for farm operations.",
     //   image: farmImage,
-    //   technologies: ["Django", "PostgreSQL", "React", "AWS S3"],
+    //   technologies: ["PostgreSQL", "React", "AWS S3"],
     //   liveDemo: "#",
     //   github: "#",
     //   featured: false

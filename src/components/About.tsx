@@ -43,7 +43,7 @@ const About = () => {
                   <p className="text-lg leading-relaxed text-muted-foreground mb-6">
                     I'm a passionate <span className="text-accent font-semibold">software engineer</span> and 
                     builder who thrives on solving problems with technology. I specialize in{" "}
-                    <span className="text-accent font-semibold">React, Firebase, Django</span>, and 
+                    <span className="text-accent font-semibold">React, Firebase</span>, and 
                     modern frontend tools.
                   </p>
                   
