@@ -1,12 +1,13 @@
 import type { Config } from "tailwindcss";
 
+import tailwindAnimate from "tailwindcss-animate";
+
 export default {
-	darkMode: ["class"],
+	darkMode: "class",
 	content: [
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
 		"./app/**/*.{ts,tsx}",
-		"./src/**/*.{ts,tsx}",
 	],
 	prefix: "",
 	theme: {
@@ -97,13 +98,18 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'scroll-line': {
+					'0%': { transform: 'translateY(-100%)' },
+					'100%': { transform: 'translateY(200%)' },
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'scroll-line': 'scroll-line 2s infinite cubic-bezier(0.4, 0, 0.2, 1)',
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [tailwindAnimate],
 } satisfies Config;
