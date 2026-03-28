@@ -1,9 +1,10 @@
 // components/About.tsx
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 import Image from 'next/image';
 
 // Register ScrollTrigger only on the client side
@@ -14,50 +15,48 @@ if (typeof window !== "undefined") {
 const About = () => {
   const sectionRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // 1. General stagger reveal for all content
-      gsap.from(".about-reveal", {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        }
-      });
+  useGSAP(() => {
+    // 1. General stagger reveal for all content
+    gsap.from(".about-reveal", {
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.15,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+      }
+    });
 
-      // 2. Specialized animation for the italicized "precision"
-      gsap.from(".italic-reveal", {
-        opacity: 0,
-        x: -20,
-        skewX: -10,
-        duration: 1,
-        delay: 0.6,
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 75%",
-        }
-      });
+    // 2. Specialized animation for the italicized "precision"
+    gsap.from(".italic-reveal", {
+      opacity: 0,
+      x: -20,
+      skewX: -10,
+      duration: 1,
+      delay: 0.6,
+      ease: "back.out(1.7)",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 75%",
+      }
+    });
 
-      // 3. Subtle scale reveal for the headshot
-      gsap.from(".image-zoom", {
-        scale: 1.15,
-        opacity: 0,
-        duration: 1.5,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-        }
-      });
-    }, sectionRef);
+    // 3. Subtle scale reveal for the headshot
+    gsap.from(".image-zoom", {
+      scale: 1.15,
+      opacity: 0,
+      duration: 1.5,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 70%",
+      }
+    });
 
-    return () => ctx.revert();
-  }, []);
+    setTimeout(() => ScrollTrigger.refresh(), 500);
+  }, { scope: sectionRef });
 
   return (
     <section id="about" ref={sectionRef} className="py-24 px-6 bg-background relative overflow-hidden">
@@ -115,6 +114,7 @@ const About = () => {
               src="/assets/CTO-Headshot.jpg"
               alt="Fatokun Emmanuel"
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 33vw"
               className="image-zoom object-cover transition-all duration-1000 ease-in-out scale-105 group-hover:scale-100"
             />
 

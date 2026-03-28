@@ -1,185 +1,99 @@
-"use client";
+// components/Resume.tsx
+'use client';
 
-import { useEffect, useRef, useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Download, FileText, Eye } from "lucide-react"
+import { useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+import { Button } from "@/components/ui/button";
+import { Download, ExternalLink } from "lucide-react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const Resume = () => {
-  const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef(null);
 
-  // Your pre-uploaded resume (place Ambassador_Resume.pdf in /public folder)
-  const resumeUrl = "/Fatokun_Emmanuel_Resume.pdf"
+  const resumeUrl = "/Emmanuel Fatokun Resume _ Frontend.pdf";
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.1 }
-    )
+  useGSAP(() => {
+    gsap.from(".resume-reveal", {
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+      }
+    });
 
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.disconnect()
-  }, [])
+    setTimeout(() => ScrollTrigger.refresh(), 500);
+  }, { scope: sectionRef });
 
-  const downloadResume = () => {
-    const a = document.createElement("a")
-    a.href = resumeUrl
-    a.download = "Fatokun_Emmanuel_Resume.pdf"
-    document.body.appendChild(a)
-    a.click()
-    document.body.removeChild(a)
-  }
-
-  const previewResume = () => {
-    window.open(resumeUrl, "_blank")
-  }
-
-  const resumeHighlights = [
-    "3+ years of software development experience",
-    "10+ completed projects across various domains",
-    "Proficient in React, TypeScript, Firebase",
-    "Strong problem-solving and analytical skills",
-    "Experience with both frontend and backend development",
-    "Passionate about creating user-centered solutions",
-  ]
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = resumeUrl;
+    link.download = "Emmanuel_Fatokun_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
-    <section id="resume" className="py-20 px-4 sm:px-6 lg:px-8 bg-surface">
-      <div className="max-w-6xl mx-auto">
-        <div
-          ref={ref}
-          className={`transition-all duration-1000 ${isVisible ? "animate-fade-in" : "opacity-0"
-            }`}
-        >
-          {/* Section Title */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              My <span className="text-gradient-accent">Resume</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Download my comprehensive resume to learn more about my experience,
-              skills, and achievements in detail.
-            </p>
-            <div className="w-24 h-1 bg-accent mx-auto rounded-full mt-6" />
-          </div>
+    <section id="resume" ref={sectionRef} className="py-24 px-6 bg-background relative overflow-hidden text-center">
+      {/* Subliminal Background Accent */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Resume Preview */}
-            <div className={`${isVisible ? "animate-scale-in" : "opacity-0"}`}>
-              <Card className="bg-gradient-card border-0 shadow-medium hover-lift">
-                <CardContent className="p-8 text-center">
-                  <div className="w-24 h-24 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <FileText className="h-12 w-12 text-accent" />
-                  </div>
+      <div className="max-w-4xl mx-auto space-y-10 relative z-10">
+        <div className="resume-reveal inline-flex items-center gap-2 text-accent font-bold text-[10px] uppercase tracking-[0.3em]">
+          <span className="w-8 h-[1px] bg-accent"></span>
+          Professional Dossier
+        </div>
 
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
-                    Resume Ready
-                  </h3>
-                  <p className="text-muted-foreground mb-6">
-                    File: Fatokun_Emmanuel_Resume.pdf
-                  </p>
-                  <div className="flex gap-4 justify-center">
-                    <Button
-                      onClick={downloadResume}
-                      className="bg-accent hover:bg-accent-hover text-accent-foreground shadow-medium"
-                    >
-                      <Download className="mr-2 h-4 w-4" />
-                      Download PDF
-                    </Button>
-                    <Button
-                      onClick={previewResume}
-                      variant="outline"
-                      className="hover-lift"
-                    >
-                      <Eye className="mr-2 h-4 w-4" />
-                      Preview
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+        <h2 className="resume-reveal text-4xl md:text-6xl font-bold tracking-tighter text-foreground leading-tight">
+          Review my technical <br />
+          <span className="text-accent italic font-medium inline-block">legacy</span>.
+        </h2>
 
-            {/* Resume Highlights */}
-            <div
-              className={`space-y-6 ${isVisible ? "animate-slide-up" : "opacity-0"
-                }`}
-            >
-              <Card className="bg-gradient-card border-0 shadow-medium hover-lift">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold text-foreground mb-4">
-                    Resume Highlights
-                  </h3>
-                  <ul className="space-y-3">
-                    {resumeHighlights.map((highlight, index) => (
-                      <li
-                        key={index}
-                        className="flex items-start text-muted-foreground"
-                      >
-                        <div className="w-2 h-2 bg-accent rounded-full mt-2 mr-3 flex-shrink-0" />
-                        {highlight}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
+        <p className="resume-reveal text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+          My resume details over 3 years of engineering excellence, from architecting
+          frontend infrastructures as a CTO to shipping high-fidelity products with
+          Next.js and TypeScript.
+        </p>
 
-              {/* Quick Contact */}
-              <Card className="bg-gradient-primary border-0 shadow-strong">
-                <CardContent className="p-6 text-center">
-                  <h3 className="text-xl font-semibold text-accent-foreground mb-3">
-                    Let's Connect
-                  </h3>
-                  <p className="text-accent-foreground/90 mb-4">
-                    Interested in working together? I'd love to hear from you!
-                  </p>
-                  <Button
-                    onClick={() =>
-                      document
-                        .querySelector("#contact")
-                        ?.scrollIntoView({ behavior: "smooth" })
-                    }
-                    variant="secondary"
-                    className="hover-lift shadow-medium"
-                  >
-                    Get In Touch
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
+        <div className="resume-reveal flex flex-wrap gap-4 justify-center">
+          <Button
+            size="lg"
+            onClick={handleDownload}
+            className="h-14 px-10 rounded-full bg-foreground text-background hover:bg-foreground/90 font-bold group shadow-xl"
+          >
+            <Download className="mr-2 h-5 w-5" /> Download PDF
+          </Button>
 
-          {/* Download CTA */}
-          <div className="text-center mt-12">
-            <Card className="bg-gradient-accent border-0 shadow-strong max-w-2xl mx-auto">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold text-accent-foreground mb-3">
-                  Ready to Download?
-                </h3>
-                <p className="text-accent-foreground/90 text-lg mb-6">
-                  Get the complete picture of my experience, skills, and
-                  achievements. Perfect for HR teams and hiring managers.
-                </p>
-                <Button
-                  onClick={downloadResume}
-                  size="lg"
-                  variant="secondary"
-                  className="hover-lift shadow-strong font-semibold px-8"
-                >
-                  <Download className="mr-2 h-5 w-5" />
-                  Download Full Resume
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
+          <Button
+            variant="outline"
+            size="lg"
+            onClick={() => window.open(resumeUrl, '_blank')}
+            className="h-14 px-10 rounded-full border-border hover:bg-accent/5 hover:text-accent font-bold"
+          >
+            <ExternalLink className="mr-2 h-5 w-5" /> View Fullscreen
+          </Button>
+        </div>
+
+        {/* Technical Core Tags */}
+        <div className="resume-reveal flex flex-wrap gap-2 justify-center pt-6">
+          {["Next.js", "React", "TypeScript", "Tailwind CSS", "Technical Leadership"].map((skill) => (
+            <span key={skill} className="px-4 py-1.5 text-[10px] font-bold border border-border/40 rounded-full bg-card/30 text-muted-foreground uppercase tracking-widest">
+              {skill}
+            </span>
+          ))}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Resume
+export default Resume;

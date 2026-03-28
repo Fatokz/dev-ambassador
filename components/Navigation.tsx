@@ -1,105 +1,166 @@
-// components/Navigation.tsx
 "use client";
 
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Moon, Sun, Menu, X } from "lucide-react";
-import { useTheme } from "./ThemeProvider";
+import { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef(null);
+  const menuLinksRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
+
+    // Refresh ScrollTrigger on mobile to fix the "no animation" issue
+    ScrollTrigger.refresh();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // GSAP Mobile Menu Animation using useGSAP for better React integration
+  useGSAP(() => {
+    if (isOpen) {
+      // Lock body scroll
+      document.body.classList.add('no-scroll');
+
+      gsap.to(menuRef.current, {
+        clipPath: "circle(150% at 100% 0%)",
+        WebkitClipPath: "circle(150% at 100% 0%)",
+        duration: 0.8,
+        ease: "power4.inOut",
+      });
+      gsap.fromTo(".nav-link-mobile",
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.1, delay: 0.3, ease: "power3.out" }
+      );
+    } else {
+      // Unlock body scroll
+      document.body.classList.remove('no-scroll');
+
+      gsap.to(menuRef.current, {
+        clipPath: "circle(0% at 100% 0%)",
+        WebkitClipPath: "circle(0% at 100% 0%)",
+        duration: 0.6,
+        ease: "power4.inOut",
+      });
+    }
+  }, { dependencies: [isOpen], scope: menuRef });
 
   const navItems = [
     { label: "Home", href: "#home" },
     { label: "Expertise", href: "#skills" },
     { label: "Case Studies", href: "#projects" },
     { label: "Experience", href: "#experience" },
+    { label: "Resume", href: "#resume" },
     { label: "Contact", href: "#contact" },
   ];
 
   const scrollToSection = (href: string) => {
+    setIsOpen(false);
     const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: "smooth" });
-    setIsMobileMenuOpen(false);
+    if (element) {
+      const offset = 80;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${isScrolled
-          ? "py-4 bg-background/60 backdrop-blur-xl border-b border-border/40 shadow-sm"
-          : "py-6 bg-transparent"
-        }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        {/* Professional Brand */}
-        <div className="flex flex-col cursor-pointer" onClick={() => scrollToSection("#home")}>
-          <span className="text-xl font-bold tracking-tight text-foreground">
-            Fatokun <span className="text-accent">Emmanuel</span>
-          </span>
-          <span className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
-            Software Engineer & CTO
-          </span>
-        </div>
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${isScrolled
+            ? "py-4 bg-background/80 backdrop-blur-xl border-b border-border/40"
+            : "py-6 bg-transparent"
+          }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+          {/* Brand */}
+          <div className="flex flex-col cursor-pointer group" onClick={() => scrollToSection("#home")}>
+            <span className="text-xl font-bold tracking-tight text-foreground group-hover:text-accent transition-colors">
+              Fatokun <span className="text-accent">Emmanuel</span>
+            </span>
+            <span className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground font-bold">
+              Software Engineer & CTO
+            </span>
+          </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <button
-              key={item.label}
-              onClick={() => scrollToSection(item.href)}
-              className="text-sm font-medium text-muted-foreground hover:text-accent transition-colors relative group"
-            >
-              {item.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-accent transition-all duration-300 group-hover:w-full" />
-            </button>
-          ))}
-          <div className="h-4 w-[1px] bg-border/60 mx-2" />
-          {/* <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-            className="rounded-full hover:bg-accent/10 hover:text-accent"
-          >
-            {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
-          </Button> */}
-        </div>
-
-        {/* Mobile Controls */}
-        <div className="md:hidden flex items-center gap-4">
-          <Button variant="ghost" size="icon" onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
-            {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
-          </Button>
-          <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </Button>
-        </div>
-      </div>
-
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 top-[70px] bg-background/95 backdrop-blur-lg z-50 md:hidden p-6 animate-in fade-in slide-in-from-top-4">
-          <div className="flex flex-col gap-6">
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => scrollToSection(item.href)}
-                className="text-2xl font-bold text-left hover:text-accent"
+                className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors relative group"
               >
                 {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-accent transition-all duration-300 group-hover:w-full" />
               </button>
             ))}
           </div>
+
+          {/* Mobile Toggle */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden z-[110] relative p-2 text-foreground"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
-      )}
-    </nav>
+      </nav>
+
+      {/* Premium GSAP Mobile Menu Overlay */}
+      <div
+        ref={menuRef}
+        style={{ 
+          clipPath: "circle(0% at 100% 0%)",
+          WebkitClipPath: "circle(0% at 100% 0%)"
+        }}
+        className={`fixed inset-0 bg-background z-[105] md:hidden flex flex-col justify-center px-10 transition-all duration-300 ${
+          isOpen ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none"
+        }`}
+      >
+        {/* Decorative Grid for the Menu (Obsidian Style) */}
+        <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+
+        <div className="relative z-10 flex flex-col gap-8">
+          <p className="text-accent font-bold text-[10px] uppercase tracking-[0.4em] mb-4">Menu</p>
+          {navItems.map((item) => (
+            <button
+              key={item.label}
+              onClick={() => scrollToSection(item.href)}
+              className="nav-link-mobile text-4xl font-bold text-left tracking-tighter hover:text-accent transition-colors"
+            >
+              {item.label}
+            </button>
+          ))}
+
+          <div className="h-[1px] w-full bg-border/40 my-4 nav-link-mobile" />
+
+          {/* Socials in Mobile Menu */}
+          <div className="flex gap-6 nav-link-mobile">
+            <a href="https://github.com/Fatokz" className="text-muted-foreground hover:text-accent transition-colors"><Github size={20} /></a>
+            <a href="https://linkedin.com/in/fatokun-emmanuel" className="text-muted-foreground hover:text-accent transition-colors"><Linkedin size={20} /></a>
+            <a href="mailto:devambassador@gmail.com" className="text-muted-foreground hover:text-accent transition-colors"><Mail size={20} /></a>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

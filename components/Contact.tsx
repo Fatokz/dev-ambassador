@@ -1,328 +1,174 @@
-"use client";
+// components/Contact.tsx
+'use client';
 
-import { useEffect, useRef, useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { useToast } from "@/hooks/use-toast"
-import { Send, Phone } from "lucide-react";
-import { MdLocationPin } from "react-icons/md";
-import { IoMdMail } from "react-icons/io";
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
+import { useRef, useState } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import { Send, Mail, Github, Linkedin, MapPin, ArrowUpRight } from "lucide-react";
 
-
-// TikTok Icon SVG Component
-const TikTokIcon = ({ className }: { className?: string }) => (
-  <svg
-    className={className}
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
-  </svg>
-)
-
-const Contact = () => {
-  const [isVisible, setIsVisible] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  })
-  const ref = useRef<HTMLDivElement>(null)
-  const { toast } = useToast()
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }))
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
-    if (!formData.name || !formData.email || !formData.message) {
-      toast({
-        title: "Please fill in all fields",
-        description: "All fields are required to send your message.",
-        variant: "destructive"
-      })
-      return
-    }
-
-    setIsSubmitting(true)
-
-    try {
-      // Create mailto URL with pre-filled data
-      const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`)
-      const body = encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      )
-      const mailtoUrl = `mailto:devambassador@gmail.com?subject=${subject}&body=${body}`
-
-      // Open email client
-      window.location.href = mailtoUrl
-
-      toast({
-        title: "Email client opened!",
-        description: "Your email client should open with the message pre-filled. Please send when ready.",
-      })
-
-      setFormData({ name: '', email: '', message: '' })
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "There was an issue opening your email client. Please try again.",
-        variant: "destructive"
-      })
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
-  const contactInfo = [
-    {
-      icon: IoMdMail,
-      label: "Email",
-      value: "devambassador@gmail.com",
-      href: "mailto:devambassador@gmail.com"
-    },
-    {
-      icon: FaGithub ,
-      label: "GitHub",
-      value: "@Fatokz",
-      href: "https://github.com/Fatokz"
-    },
-    {
-      icon: FaLinkedin,
-      label: "LinkedIn",
-      value: "Fatokun Emmanuel",
-      href: "https://linkedin.com/in/fatokun-emmanuel"
-    },
-    {
-      icon: MdLocationPin,
-      label: "Location",
-      value: "Available Globally",
-      href: null
-    }
-  ]
-
-  return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div ref={ref} className={`transition-all duration-1000 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-          {/* Section Title */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Get In <span className="text-gradient-accent">Touch</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Have a project in mind or want to collaborate? I'd love to hear from you.
-              Let's build something amazing together!
-            </p>
-            <div className="w-24 h-1 bg-accent mx-auto rounded-full mt-6" />
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div className={`${isVisible ? 'animate-scale-in' : 'opacity-0'}`}>
-              <Card className="bg-gradient-card border-0 shadow-medium hover-lift">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-semibold text-foreground mb-6">
-                    Send a Message
-                  </h3>
-
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                      <Label htmlFor="name" className="text-foreground font-medium">
-                        Your Name
-                      </Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        type="text"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        placeholder="Enter your full name"
-                        className="mt-2 bg-background/50 border-border/50 focus:border-accent"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="email" className="text-foreground font-medium">
-                        Email Address
-                      </Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        placeholder="Enter your email address"
-                        className="mt-2 bg-background/50 border-border/50 focus:border-accent"
-                        required
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="message" className="text-foreground font-medium">
-                        Message
-                      </Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        placeholder="Tell me about your project or how I can help..."
-                        rows={6}
-                        className="mt-2 bg-background/50 border-border/50 focus:border-accent resize-none"
-                        required
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-accent hover:bg-accent-hover text-accent-foreground font-semibold py-3 hover-lift shadow-medium"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <div className="w-4 h-4 border-2 border-accent-foreground/30 border-t-accent-foreground rounded-full animate-spin mr-2" />
-                          Sending...
-                        </>
-                      ) : (
-                        <>
-                          <Send className="mr-2 h-4 w-4" />
-                          Send Message
-                        </>
-                      )}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Contact Information */}
-            <div className={`space-y-6 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-              <Card className="bg-gradient-card border-0 shadow-medium hover-lift">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-semibold text-foreground mb-6">
-                    Contact Information
-                  </h3>
-
-                  <div className="space-y-4">
-                    {contactInfo.map((info, index) => (
-                      <div key={info.label} className="flex items-center space-x-4">
-                        <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
-                          <info.icon className="h-5 w-5 text-accent" />
-                        </div>
-                        <div>
-                          <p className="font-medium text-foreground">{info.label}</p>
-                          {info.href ? (
-                            <a
-                              href={info.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-muted-foreground hover:text-accent transition-colors"
-                            >
-                              {info.value}
-                            </a>
-                          ) : (
-                            <p className="text-muted-foreground">{info.value}</p>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Social Links */}
-              <Card className="bg-gradient-primary border-0 shadow-strong">
-                <CardContent className="p-6 text-center">
-                  <h3 className="text-xl font-semibold text-accent-foreground mb-4">
-                    Connect With Me
-                  </h3>
-                  <div className="flex justify-center space-x-4">
-                    <Button
-                      variant="secondary"
-                      size="icon"
-                      className="w-12 h-12 hover-lift hover-glow"
-                      onClick={() => window.open('https://github.com/Fatokz', '_blank')}
-                    >
-                      <FaGithub  className="h-5 w-5" />
-                    </Button>
-                    <Button
-                      variant="secondary"
-                      size="icon"
-                      className="w-12 h-12 hover-lift hover-glow"
-                      onClick={() => window.open('https://linkedin.com/in/fatokun-emmanuel', '_blank')}
-                    >
-                      <FaLinkedin className="h-5 w-5" />
-                    </Button>
-                    <Button
-                      variant="secondary"
-                      size="icon"
-                      className="w-12 h-12 hover-lift hover-glow"
-                      onClick={() => window.open('https://www.tiktok.com/@dev_ambassador', '_blank')}
-                    >
-                      <TikTokIcon className="h-5 w-5" />
-                    </Button>
-                    <Button
-                      variant="secondary"
-                      size="icon"
-                      className="w-12 h-12 hover-lift hover-glow"
-                      onClick={() => window.open('mailto:devambassador@gmail.com', '_blank')}
-                    >
-                      <IoMdMail className="h-5 w-5" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Quick Response Promise */}
-              <Card className="bg-gradient-accent border-0 shadow-strong">
-                <CardContent className="p-6 text-center">
-                  <h3 className="text-lg font-semibold text-accent-foreground mb-2">
-                    Quick Response Guaranteed
-                  </h3>
-                  <p className="text-accent-foreground/90">
-                    I typically respond to all inquiries within 24 hours.
-                    Looking forward to hearing from you!
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
 }
 
-export default Contact
+const Contact = () => {
+  const sectionRef = useRef(null);
+  const formRef = useRef(null);
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useGSAP(() => {
+    gsap.from(".contact-reveal", {
+      y: 30,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.15,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+      }
+    });
+
+    setTimeout(() => ScrollTrigger.refresh(), 500);
+  }, { scope: sectionRef });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulate high-fidelity processing
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get('name');
+
+    setTimeout(() => {
+      toast({
+        title: "Communication Established",
+        description: `Thanks ${name}, I'll review your transmission within 24 hours.`,
+      });
+      setIsSubmitting(false);
+      (e.target as HTMLFormElement).reset();
+    }, 1500);
+  };
+
+  const socials = [
+    { icon: <Github size={18} />, label: "GitHub", href: "https://github.com/Fatokz" },
+    { icon: <Linkedin size={18} />, label: "LinkedIn", href: "https://linkedin.com/in/fatokun-emmanuel" },
+    { icon: <Mail size={18} />, label: "Email", href: "mailto:devambassador@gmail.com" },
+  ];
+
+  return (
+    <section id="contact" ref={sectionRef} className="py-24 px-6 bg-background relative overflow-hidden">
+      {/* Subtle Grid Background to match Hero */}
+      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_100%,#000_70%,transparent_100%)] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 relative z-10">
+
+        {/* Left Side: The "Call to Action" */}
+        <div className="lg:col-span-5 space-y-10">
+          <div className="contact-reveal inline-flex items-center gap-2 text-accent font-bold text-[10px] uppercase tracking-[0.3em]">
+            <span className="w-8 h-[1px] bg-accent"></span>
+            Contact Protocol
+          </div>
+
+          <h2 className="contact-reveal text-5xl md:text-7xl font-bold tracking-tighter text-foreground leading-[0.9]">
+            Let's build the <br />
+            <span className="text-accent italic font-medium italic-reveal inline-block">future</span> together.
+          </h2>
+
+          <div className="space-y-6">
+            <div className="contact-reveal group cursor-pointer flex items-center gap-4">
+              <div className="p-3 rounded-full bg-accent/5 border border-accent/10 group-hover:bg-accent group-hover:text-black transition-all duration-500">
+                <Mail size={20} />
+              </div>
+              <div>
+                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Email</p>
+                <p className="text-foreground font-medium">devambassador@gmail.com</p>
+              </div>
+            </div>
+
+            <div className="contact-reveal group cursor-pointer flex items-center gap-4">
+              <div className="p-3 rounded-full bg-accent/5 border border-accent/10 group-hover:bg-accent group-hover:text-black transition-all duration-500">
+                <MapPin size={20} />
+              </div>
+              <div>
+                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Location</p>
+                <p className="text-foreground font-medium">Ibadan, Nigeria (Global Remote)</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Social Links */}
+          <div className="contact-reveal flex gap-4 pt-4">
+            {socials.map((social, i) => (
+              <a
+                key={i}
+                href={social.href}
+                target="_blank"
+                className="w-12 h-12 flex items-center justify-center rounded-full border border-border/60 hover:border-accent hover:text-accent transition-all duration-500 bg-card/30"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Right Side: The Premium Form */}
+        <div className="lg:col-span-7 contact-reveal">
+          <form
+            onSubmit={handleSubmit}
+            className="p-8 md:p-12 rounded-[2.5rem] border border-border/40 bg-card/20 backdrop-blur-sm space-y-8"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-2">
+                <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-1">Full Name</label>
+                <Input
+                  name="name"
+                  placeholder="Emmanuel Fatokun"
+                  className="h-14 bg-background/50 border-border/40 focus:border-accent rounded-2xl px-6 transition-all"
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-1">Email Address</label>
+                <Input
+                  name="email"
+                  type="email"
+                  placeholder="your@email.com"
+                  className="h-14 bg-background/50 border-border/40 focus:border-accent rounded-2xl px-6 transition-all"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground ml-1">Project Message</label>
+              <Textarea
+                name="message"
+                placeholder="Briefly describe your vision..."
+                className="min-h-[150px] bg-background/50 border-border/40 focus:border-accent rounded-2xl p-6 transition-all resize-none"
+                required
+              />
+            </div>
+
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full h-16 rounded-2xl bg-foreground text-background hover:bg-foreground/90 font-bold text-lg transition-all duration-500 group"
+            >
+              {isSubmitting ? "Transmitting..." : "Initiate Conversation"}
+              <Send className={`ml-2 h-5 w-5 transition-transform duration-500 ${isSubmitting ? 'animate-pulse' : 'group-hover:translate-x-1 group-hover:-translate-y-1'}`} />
+            </Button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+export default Contact;
