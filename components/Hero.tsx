@@ -56,8 +56,8 @@ const Hero = () => {
           y: -20,
           duration: 0.5,
           delay: 2,
-          onComplete: () => { 
-            if (wordRef.current) wordRef.current.innerText = words[1]; 
+          onComplete: () => {
+            if (wordRef.current) wordRef.current.innerText = words[1];
           }
         });
         return;
@@ -72,8 +72,8 @@ const Hero = () => {
           y: -20,
           duration: 0.5,
           delay: 2,
-          onComplete: () => { 
-            if (wordRef.current) wordRef.current.innerText = nextWord; 
+          onComplete: () => {
+            if (wordRef.current) wordRef.current.innerText = nextWord;
           }
         });
     });
@@ -122,8 +122,8 @@ const Hero = () => {
         </p>
 
         <div className="reveal flex flex-wrap gap-4 justify-center items-center">
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             className="h-12 px-8 rounded-full bg-foreground text-background hover:bg-foreground/90 font-bold group"
             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
           >

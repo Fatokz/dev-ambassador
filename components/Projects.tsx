@@ -145,6 +145,17 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
+
+                {/* Mobile View Project Link - Visible only on small screens */}
+                <div className="md:hidden pt-4">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    className="inline-flex items-center gap-2 text-xs font-bold text-accent hover:text-accent/80 transition-colors"
+                  >
+                    View Project <ExternalLink size={14} />
+                  </a>
+                </div>
               </div>
             </div>
           ))}

@@ -66,6 +66,9 @@ const Navigation = () => {
 
   const scrollToSection = (href: string) => {
     setIsOpen(false);
+    // Manually remove no-scroll to ensure immediate scroll compatibility
+    document.body.classList.remove('no-scroll');
+
     const element = document.querySelector(href);
     if (element) {
       const offset = 80;
@@ -74,9 +77,12 @@ const Navigation = () => {
       const elementPosition = elementRect - bodyRect;
       const offsetPosition = elementPosition - offset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
+      // Small delay to allow the menu closing state to settle
+      requestAnimationFrame(() => {
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
       });
     }
   };
@@ -84,9 +90,9 @@ const Navigation = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${isScrolled
-            ? "py-4 bg-background/80 backdrop-blur-xl border-b border-border/40"
-            : "py-6 bg-transparent"
+        className={`fixed top-0 left-0 right-0 z-[200] transition-all duration-500 ${isScrolled
+          ? "py-4 bg-background/80 backdrop-blur-xl border-b border-border/40"
+          : "py-6 bg-transparent"
           }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -106,7 +112,7 @@ const Navigation = () => {
               <button
                 key={item.label}
                 onClick={() => scrollToSection(item.href)}
-                className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors relative group"
+                className="text-xs font-bold tracking-widest uppercase text-muted-foreground hover:text-accent transition-colors relative group cursor-pointer"
               >
                 {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-accent transition-all duration-300 group-hover:w-full" />
@@ -127,13 +133,12 @@ const Navigation = () => {
       {/* Premium GSAP Mobile Menu Overlay */}
       <div
         ref={menuRef}
-        style={{ 
+        style={{
           clipPath: "circle(0% at 100% 0%)",
           WebkitClipPath: "circle(0% at 100% 0%)"
         }}
-        className={`fixed inset-0 bg-background z-[105] md:hidden flex flex-col justify-center px-10 transition-all duration-300 ${
-          isOpen ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none"
-        }`}
+        className={`fixed inset-0 bg-background z-[150] md:hidden flex flex-col justify-center px-10 transition-all duration-300 ${isOpen ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none"
+          }`}
       >
         {/* Decorative Grid for the Menu (Obsidian Style) */}
         <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
