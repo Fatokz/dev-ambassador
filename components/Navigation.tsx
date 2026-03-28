@@ -90,14 +90,17 @@ const Navigation = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[200] transition-all duration-500 ${isScrolled
+        className={`fixed top-0 left-0 right-0 z-[200] transition-all duration-500 ${isScrolled && !isOpen
           ? "py-4 bg-background/80 backdrop-blur-xl border-b border-border/40"
           : "py-6 bg-transparent"
           }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Brand */}
-          <div className="flex flex-col cursor-pointer group" onClick={() => scrollToSection("#home")}>
+          <div
+            className={`flex flex-col cursor-pointer group transition-all duration-300 ${isOpen ? "opacity-0 invisible pointer-events-none" : "opacity-100 visible"}`}
+            onClick={() => scrollToSection("#home")}
+          >
             <span className="text-xl font-bold tracking-tight text-foreground group-hover:text-accent transition-colors">
               Fatokun <span className="text-accent">Emmanuel</span>
             </span>
