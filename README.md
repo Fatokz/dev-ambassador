@@ -67,4 +67,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-Built by [Fatokun Emmanuel](https://github.com/Fatokz)
+Built by [Fatokun Emmanuel Oluwadunsin](https://github.com/Fatokz)
