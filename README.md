@@ -4,7 +4,7 @@ Welcome to the official repository of my modern, high-performance developer port
 
 ## 🚀 Live Demo
 
-Check out the live version here: [dev-ambassador.vercel.app](https://dev-ambassador.vercel.app)
+Check out the live version here: [devambassador.vercel.app](https://devambassador.vercel.app)
 
 ## ✨ Features
 
