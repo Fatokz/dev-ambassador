@@ -1,73 +1,70 @@
-# Welcome to your Lovable project
+# Fatokun Emmanuel | Software Engineer Portfolio
 
-## Project info
+Welcome to the official repository of my modern, high-performance developer portfolio. This application is built with a cutting-edge tech stack, featuring immersive 3D experiences and fluid animations to showcase my skills and projects as a software engineer.
 
-**URL**: https://lovable.dev/projects/626215a6-a48e-4df3-9936-014eba3884c8
+## 🚀 Live Demo
 
-## How can I edit this code?
+Check out the live version here: [dev-ambassador.vercel.app](https://dev-ambassador.vercel.app)
 
-There are several ways of editing your application.
+## ✨ Features
 
-**Use Lovable**
+- **Immersive 3D Scenes**: Integrated 3D environments using Three.js and React Three Fiber.
+- **Fluid Animations**: Smooth transitions and high-performance animations powered by GSAP and Framer Motion.
+- **Dynamic Content**: Sections for About, Experience, Projects, and Skills, all easily manageable.
+- **Responsive Design**: Fully optimized for mobile, tablet, and desktop experiences.
+- **Dark/Light Mode**: Elegant theme switching with seamless transitions.
+- **Contact Integration**: Functional contact form for direct inquiries.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/626215a6-a48e-4df3-9936-014eba3884c8) and start prompting.
+## 🛠️ Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **Frontend**: [React 19](https://reactjs.org/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Components**: [Radix UI](https://www.radix-ui.com/) & [shadcn/ui](https://ui.shadcn.com/)
+- **Animations**: [GSAP](https://greensock.com/gsap/) & [Framer Motion](https://www.framer.com/motion/)
+- **3D Rendering**: [Three.js](https://threejs.org/) & [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
+- **State Management**: [TanStack Query](https://tanstack.com/query/latest)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
 
-**Use your preferred IDE**
+## 📦 Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js (Latest LTS recommended)
+- npm or yarn
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/Fatokz/dev-ambassador.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd dev-ambassador
+   ```
+3. Install dependencies:
+   ```sh
+   npm install
+   ```
+4. Start the development server:
+   ```sh
+   npm run dev
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 📜 Project Structure
 
-# Step 3: Install the necessary dependencies.
-npm i
+- `app/`: Next.js App Router pages and main layout.
+- `components/`: Reusable UI components and section-specific layouts (Hero, About, Projects, etc.).
+- `components/ui/`: Base UI components (buttons, cards, etc.) from shadcn/ui.
+- `hooks/`: Custom React hooks for animations and state logic.
+- `lib/`: Utility functions and third-party configurations.
+- `public/`: Static assets including images and 3D models.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## 📄 License
 
-**Edit a file directly in GitHub**
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/626215a6-a48e-4df3-9936-014eba3884c8) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Built by [Fatokun Emmanuel](https://github.com/Fatokz)
