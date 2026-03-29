@@ -15,7 +15,7 @@ const experiences = [
     company: "FarmX",
     role: "Chief Technology Officer (CTO)",
     period: "Oct 2025 — Present",
-    description: "Architecting and maintaining frontend infrastructure using React, Next.js, and Tailwind CSS. Leading technical execution and collaborating on long-term digital roadmaps to deliver pixel-perfect web interfaces without feature bloat.",
+    description: "Architecting and maintaining frontend infrastructure using React, and Tailwind CSS. Leading technical execution and collaborating on long-term digital roadmaps to deliver pixel-perfect web interfaces without feature bloat.",
     highlights: ["Infrastructure Architecture", "Technical Roadmap", "Pixel-Perfect UI"]
   },
   {
@@ -26,7 +26,7 @@ const experiences = [
     highlights: ["Frontend Architecture", "Admin Dashboards", "Brand Identity"]
   },
   {
-    company: "swotbuilds",
+    company: "SWOT Builds",
     role: "Frontend Engineer",
     period: "Nov 2025 — Present",
     description: "Engineering clean, practical frontend components utilizing Next.js, TypeScript, and Tailwind CSS. Synergizing with co-developers to maintain simple, high-fidelity codebases aligned with core project deliverables.",
